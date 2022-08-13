@@ -9,7 +9,7 @@ services:
 volumes:
   ha-postgres-vol:
     external: false
-  
+
 networks:
   ha-local:
     external: false
