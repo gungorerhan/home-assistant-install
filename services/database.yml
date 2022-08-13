@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  database:
+    container_name: ha-database
+    image: ha/database:${RELEASE_VERSION}
+    build:
+      context: ../database
+      dockerfile: database.dockerfile
+    ports:
+      - 54320:5432
+    environment:
+      POSTGRES_USER: ${HA_USER}
+      POSTGRES_PASSWORD: ${HA_PASSWORD}
+      POSTGRES_DB: ${HA_DOMAIN}
+
+    volumes:
+      - ha-postgres-vol:/var/lib/postgresql/data
+    networks:
+      - ha-local
+    restart: unless-stopped
