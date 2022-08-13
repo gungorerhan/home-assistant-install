@@ -10,9 +10,9 @@ services:
     ports:
       - 54320:5432
     environment:
-      POSTGRES_USER: ${HA_USER}
-      POSTGRES_PASSWORD: ${HA_PASSWORD}
-      POSTGRES_DB: ${HA_DOMAIN}
+      HA_USER: ${HA_USER}
+      HA_PASSWORD: ${HA_PASSWORD}
+      HA_DATABASE: ${HA_DOMAIN}
 
     volumes:
       - ha-postgres-vol:/var/lib/postgresql/data
